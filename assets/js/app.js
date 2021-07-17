@@ -21,3 +21,17 @@ var svg = d3.select("#scatter")
 // Append svg group
 var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+// Initial params for chart to include assignment and bonus
+var allData = null;   // used to store the chart data
+var chosenXAxis = "poverty";   // default initial x-axis for chart
+var chosenYAxis = "obesity";   // default initial y-axis for chart
+var xAxisLabels = ["poverty", "age", "income"];
+var yAxisLabels = ["obesity", "smokes", "healthcare"];
+var labelsTitle = { "poverty": "In Poverty (%)", 
+"age": "Age (Median)", 
+"income": "Household Income (Median)",
+"obesity": "Obese (%)", 
+"smokes": "Smokes (%)", 
+"healthcare": "Lacks Healthcare (%)" };
+
