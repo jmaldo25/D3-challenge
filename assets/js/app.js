@@ -50,3 +50,17 @@ function yScale(censusData, chosenYAxis){
   return yLinearScale;
 }
 
+function renderXAxis(newXScale, xAxis){
+  var bottomAxis = d3.axisBottom(newXScale);
+  xAxis.transition()
+  .call(bottomAxis);
+  return xAxis;
+}
+
+function renderYAxis(newYScale, yAxis){
+  var leftAxis = d3.axisLeft(newYScale);
+  yAxis.transition()
+  .call(leftAxis);
+  return yAxis;
+}
+
