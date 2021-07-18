@@ -169,5 +169,27 @@ d3.csv("assets/data/data.csv").then(function(censusData){
   .call(leftAxis);
 
   // Creating initial circles
+  var circlesGroup = chartGroup.selectAll("circle")
+  .data(censusData)
+  .enter()
+  .append("circle")
+  .attr("cx", d => xLinearScale(d[chosenXAxis]))
+  .attr("cy", d => yLinearScale(d.obesity))
+  .attr("r", 18)
+  .attr("fill", "purple")
+  .attr("opacity", ".5");
 
+  // Adding text to circles
+  var circletextGroup = chartGroup.selectAll()
+  .data(censusData)
+  .enter()
+  .append("text")
+  .text(d => (d.abbr))
+  .attr("x", d => xLinearScale(d[chosenXAxis]))
+  .attr("y", d => yLinearScale(d[chosenYAxis]))
+  .style("font-size", "11px")
+  .style("text-anchor", "middle")
+  .style('fill', 'black');
+
+  
 })
