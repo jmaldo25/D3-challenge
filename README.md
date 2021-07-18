@@ -38,6 +38,9 @@ Using the D3 techniques we taught you in class, create a scatter plot that repre
 
 * Note: You'll need to use `python -m http.server` to run the visualization. This will host the page at `localhost:8000` in your web browser.
 
+
+### If Python server does not work here is web link to page:
+[https://jmaldo25.github.io/D3-challenge/](https://jmaldo25.github.io/D3-challenge/)
 - - -
 
 ### Bonus: Impress the Boss (Optional Assignment)

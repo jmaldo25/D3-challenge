@@ -64,3 +64,21 @@ function renderYAxis(newYScale, yAxis){
   return yAxis;
 }
 
+// Creating function to update circles and transition
+function renderCircles(circlesGroup, newXScale, newYScale, chosenXAxis, chosenYAxis){
+  circlesGroup.transition()
+  .duration(1000)
+  .attr("cx", d => newXScale(d[chosenXAxis]))
+  .attr("cy", d => newYScale(d[chosenYAxis]));
+  return circlesGroup;
+}
+
+// Creating function used to update text and transition to new text
+function renderText(circletextGroup, newXScale, newYScale, chosenXAxis, chosenYAxis){
+  circletextGroup.transition()
+  .duration(1000)
+  .attr("x", d => newXScale(d[chosenXAxis]))
+  .attr("y", d => newYScale(d[chosenYAxis]));
+  return circletextGroup;
+}
+
