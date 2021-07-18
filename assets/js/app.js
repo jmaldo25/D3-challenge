@@ -191,5 +191,15 @@ d3.csv("assets/data/data.csv").then(function(censusData){
   .style("text-anchor", "middle")
   .style('fill', 'black');
 
+  var labelsGroup = chartGroup.append("g")
+  .attr("transform", `translate(${width / 2}, ${height + 20})`);
+
+  var povertyLabel = labelsGroup.append("text")
+  .attr("x", 0)
+  .attr("y", 15)
+  .attr("value", "poverty")
+  .classed("active", true)
+  .text("In Poverty (%)");
+
   
 })
