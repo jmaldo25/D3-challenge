@@ -82,3 +82,58 @@ function renderText(circletextGroup, newXScale, newYScale, chosenXAxis, chosenYA
   return circletextGroup;
 }
 
+// Creating function for tool tip and updated tool tip
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup){
+  // X-Axis
+  if (chosenXAxis === "poverty"){
+    var xlabel = "Poverty: ";
+  }
+  else if (chosenXAxis === "income"){
+    var xlabel = "Median Income: "
+  }
+  else {
+    var xlabel = "Age: "
+  }
+  // Y-Axis
+  if (chosenYAxis === "healthcare"){
+    var ylabel = "Lacks Healthcare: ";
+  }
+  else if (chosenYAxis === "smokes"){
+    var ylabel = "Smokers: "
+  }
+  else {
+    var ylabel = "Obesity: "
+  }
+  // Tool Tip
+  var toolTip = d3.tip()
+  .attr("class", "tooltip")
+  .stytle("background", "#5E238D")
+  .style("color", "white")
+  .offset([120, -60])
+  .html(function(d) {
+    if (chosenXAxis === "age"){
+      // Set up for all yAxis labels to show as (%)
+      // Also set up Age display without xAxis format
+      return (`${d.state}<hr>${xlabel} ${d[chosenXAxis]}<br>${ylabel}${d[chosenYAxis]}%`);
+    } else if (chosenXAxis !== "poverty" && chosenXAxis !== "age") {
+      // Display for Income in dollars for xAxis
+      return (`${d.state}<hr>${xlabel}$${d[chosenXAxis]}<br>${ylabel}${d[chosenYAxis]}%`);
+    } else {
+      // Set Poverty to show (%) for xAxis
+      return (`${d.state}<hr>${xlabel}${d[chosenXAxis]}%<br>${ylabel}${d[chosenYAxis]}%`);
+    }
+  });
+  // Creating mouse event listeners
+  circlesGroup.call(toolTip);
+  // mouse on event
+  circlesGroup.on("mouseover", function(data){
+    toolTip.show(data, this);
+  })
+  // mouse out event
+  .on("mouseout", function(data,index){
+    toolTip.hide(data)
+  });
+
+  return circlesGroup;
+}
+
