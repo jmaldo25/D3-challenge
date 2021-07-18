@@ -137,3 +137,37 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup){
   return circlesGroup;
 }
 
+// Retrieve data from CSV and execute
+d3.csv("assets/data/data.csv").then(function(censusData){
+
+  // parse data
+  censusData.forEach(function(d) {
+    d.poverty = +d.poverty;
+    d.age = +d.age;
+    d.income = +d.income;
+    d.obesity = +d.obesity;
+    d.healthcare = +d.healthcare;
+    d.smokes = +d.smokes;
+  });
+
+  // LinearScale function with csv import
+  var xLinearScale = xScale(censusData, chosenXAxis);
+  var yLinearScale = yScale(censusData, chosenYAxis);
+
+  // Creating X an Y axis functions
+  var bottomAxis = d3.axisBottom(xLinearScale);
+  var leftAxis = d3.axisLeft(yLinearScale);
+
+  // Append axis to chart
+  var xAxis = chartGroup.append("g")
+  .classed("x-axis", true)
+  .attr("transform", `translate(0, ${height})`)
+  .call(bottomAxis);
+
+  var yAxis = chartGroup.append("g")
+  .classed("y-axis", true)
+  .call(leftAxis);
+
+  // Creating initial circles
+
+})
