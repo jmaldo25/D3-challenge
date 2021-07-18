@@ -35,3 +35,18 @@ var labelsTitle = { "poverty": "In Poverty (%)",
 "smokes": "Smokes (%)", 
 "healthcare": "Lacks Healthcare (%)" };
 
+// Creating function for x and y scales, and update x and y upon click
+function xScale(censusData, chosenXAxis){
+  var xLinearScale = d3.scaleLinear()
+  .domain([d3.min(censusData, d=>d[chosenXAxis])*0.9, d3.max(censusData, d=>d[chosenXAxis])*1.1])
+  .range([0, width])
+  return xLinearScale;
+}
+
+function yScale(censusData, chosenYAxis){
+  var yLinearScale = d3.scaleLinear()
+  .domain([d3.min(censusData, d=>d[chosenYAxis])*.09, d3.max(censusData, d=>d[chosenYAxis])*1.1])
+  .range([height, 0]);
+  return yLinearScale;
+}
+
