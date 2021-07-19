@@ -239,5 +239,20 @@ d3.csv("assets/data/data.csv").then(function(censusData){
   .classed("inactive", true)
   .text("Obesity (%)");
 
-  
+  // Updating tool tip function to support csv import
+  var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+
+  // X axis lables event listener
+  labelsGroup.selectAll("text").on("click", function() {
+    // Getting value of selection
+    var value = d3.select(this).attr("value");
+    // console.log(value);   // Test to print to console log
+
+    // if select for x axises
+    if(true) {
+      if (value === "poverty" || value === "age" || value === "income") {
+        chosenXAxis = value;
+      }
+    }
+  })
 })
