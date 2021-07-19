@@ -201,5 +201,43 @@ d3.csv("assets/data/data.csv").then(function(censusData){
   .classed("active", true)
   .text("In Poverty (%)");
 
+  var healthcareLabel = labelsGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("x", margin.left * 2)
+  .attr("y", 0 - (height + 95))
+  .attr("value", "healthcare")
+  .classed("active", true)
+  .text("Lacks Healthcare (%)");
+
+  var ageLabel = labelsGroup.append("text")
+  .attr("x", 0)
+  .attr("y", 35)
+  .attr("value", "age")
+  .classed("inactive", true)
+  .text("Age (Median)");
+
+  var smokeLabel = labelsGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("x", margin.left * 2)
+  .attr("y", 0 - (height + 115))
+  .attr("value", "smokes")
+  .classed("inactive", true)
+  .text("Smokes (%)");
+
+  var incomeLabel = labelsGroup.append("text")
+  .attr("x", 0)
+  .attr("y", 55)
+  .attr("value", "income")
+  .classed("inactive", true)
+  .text("Household Income (Median)");
+
+  var obesityLabel = labelsGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("x", margin.left * 2)
+  .attr("y", 0 - (height + 135))
+  .attr("value", "obesity")
+  .classed("inactive", true)
+  .text("Obesity (%)");
+
   
 })
