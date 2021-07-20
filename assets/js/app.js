@@ -252,7 +252,48 @@ d3.csv("assets/data/data.csv").then(function(censusData){
     if(true) {
       if (value === "poverty" || value === "age" || value === "income") {
         chosenXAxis = value;
+
+        // Update x scale & axis for new date
+        xLinearScale = xScale(censusData, chosenXAxis);
+        xAxis = renderXAxis(xLinearScale, xAxis);
+
+        // Update circles with new x values
+        circlesGroup = renderCircles(circlesGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
+
+        // Update tool tip with new info
+        circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+
+        // Update circles text with new values
+        circletextGroup = renderText(circletextGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
+
+        // Change classes to change bold text
+        if (chosenXAxis === "poverty") {
+          povertyLabel.classed("active", true).classed("inactive", false);
+
+          ageLabel.classed("active", true).classed("inactive", false);
+
+          incomeLabel.classed("active", true).classed("inactive", false);
+        }
+        else if (chosenXAxis === "age") {
+          povertyLabel.classed("active", true).classed("inactive", false);
+
+          ageLabel.classed("active", true).classed("inactive", false);
+
+          incomeLabel.classed("active", true).classed("inactive", false);
+        }
+        else {
+          povertyLabel.classed("active", true).classed("inactive", false);
+
+          ageLabel.classed("active", true).classed("inactive", false);
+
+          incomeLabel.classed("active", true).classed("inactive", false);
+        }
       }
+      else {
+        chosenYAxis= value;
+
+        // Update y scale &axis for new data
+      }  
     }
   })
 })
