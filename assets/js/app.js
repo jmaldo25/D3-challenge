@@ -293,7 +293,40 @@ d3.csv("assets/data/data.csv").then(function(censusData){
         chosenYAxis= value;
 
         // Update y scale &axis for new data
-      }  
+        yLinearScale = yScale(censusData, chosenYAxis);
+        yAxis = renderYAxis(yLinearScale, yAxis);
+
+        // Update circles with new values
+        circlesGroup = renderCircles(circlesGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
+
+        // Update tool tip with new info
+        circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+
+        // Update circles text with new values
+        circletextGroup = renderText(circletextGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
+
+        if (chosenYAxis === "healthcare") {
+          healthcareLabel.classed("active", true).classed("inactive", false);
+
+          smokeLabel.classed("active", true).classed("inactive", false);
+
+          obesityLabel.classed("active", true).classed("inactive", false);
+        }
+        else if (chosenYAxis === "smokes") {
+          healthcareLabel.classed("active", true).classed("inactive", false);
+
+          smokeLabel.classed("active", true).classed("inactive", false);
+
+          obesityLabel.classed("active", true).classed("inactive", false);
+        }
+        else {
+          healthcareLabel.classed("active", true).classed("inactive", false);
+
+          smokeLabel.classed("active", true).classed("inactive", false);
+
+          obesityLabel.classed("active", true).classed("inactive", false); 
+        }
+      }
     }
-  })
-})
+  });
+});
